@@ -1,0 +1,388 @@
+
+java服务器开发学习
+c语言学习
+pmp证书了解
+flutter原理学习
+go语言学习
+汽车金融业务熟悉
+
+
+
+查大数据跳转订单返回不对
+
+
+
+{110000: 北京市, 120000: 天津市, 130000: 河北省, 140000: 山西省, 150000: 内蒙古自治区, 210000: 辽宁省, 220000: 吉林省, 230000: 黑龙江省, 310000: 上海市, 320000: 江苏省, 330000: 浙江省, 340000: 安徽省, 350000: 福建省, 360000: 江西省, 370000: 山东省, 410000: 河南省, 420000: 湖北省, 430000: 湖南省, 440000: 广东省, 450000: 广西壮族自治区, 460000: 海南省, 500000: 重庆市, 510000: 四川省, 520000: 贵州省, 530000: 云南省, 540000: 西藏自治区, 610000: 陕西省, 620000: 甘肃省, 630000: 青海省, 640000: 宁夏回族自治区, 650000: 新疆维吾尔自治区}
+
+
+[remote "origin"]
+    proxy = 127.0.0.1:7890
+    proxy = 127.0.0.1:9090
+    proxy = 127.0.0.1:7890
+    proxy = 127.0.0.1:7890
+    proxy = 127.0.0.1:7890
+
+https://www.pgyer.com/tools/udid
+https://www.pgyer.com/M42h
+
+生产环境：
+安卓：https://app.xingbangfl.com/appdownload/qhxbfl-app.apk
+iOS：https://testflight.apple.com/join/dKP4UrIe
+
+测试环境：
+testflight iOS：https://testflight.apple.com/join/3RMmLquA
+蒲公英 iOS：https://www.pgyer.com/tools/udid
+安卓：https://app-uat.xingbangfl.com/appdownload/qhxbfl-app.apk
+
+
+iOS：https://testflight.apple.com/join/7EYEwVvM
+安卓：https://app1-pv.tcl.com/appdownload/jg-1.8.0.apk
+
+
+
+
+月会：
+9月份工作
+1、app原因管理支持多选
+2、app订单目录页UI优化
+3、app电站投保页面组件开发
+4、app上传图片添加水印
+5、app示例图功能开发
+6、app自动图集功能开发
+7、租金计划，租后资产ui调整
+8、pc端自动图集页面开发
+9、pc端保险管理页面开发
+
+10月份工作
+1、设备编号支持OCR识别
+2、资方设备信息二次优化（app支持联动计算）
+3、pc端原因管理入口调整
+4、pc端结算系统页面开发
+5、pc端资方配置页面完善
+
+协调安排前端各项工作
+按产品需求迭代开发
+
+
+签约完成还能发短信
+
+
+物流阶段多个开单信息
+进销存拉新分支
+
+xbflappuat-xk-app-flutter
+
+
+光伏测试账号：19129934692、15071302366（测试）\19514760070
+
+
+联动计算组件：
+当前字段是否需要根据其他字段的值计算后动态修改
+参与计算的字段itemKey
+计算规则（参数、计算方式）
+
+进销存组件：
+page_nav组件增加待提交、审核中等状态
+退回原因
+设备数量修改后，当前库存是否联动
+
+
+
+Tcl6tdYzdApp
+
+乾蜀康易容：https://download-app.dycjr.com/qianshu/qianshucar-app-flutter.apk
+百里：https://download-app.dycjr.com/baili/baili-app-flutter.apk
+鲁商：https://download-app.dycjr.com/lushang/lushang-app-flutter.apk
+下款：https://download-app.dycjr.com/xiakuan/xiakuan-app-flutter.apk
+
+下款：https://jenkins.dycjr.com/android/xiakuan-app-flutter-1.2.34.apk
+百里：https://jenkins.dycjr.com/android/baili-app-flutter-1.2.34.apk
+乾蜀康易容：https://jenkins.dycjr.com/android/qianshucar-app-flutter-1.2.34.apk
+鲁商：https://jenkins.dycjr.com/android/lushang-app-flutter-1.2.34.apk
+
+
+Guideline 2.1：
+1、这个应用的用户仅限于我们公司及公司合作伙伴；
+2、这个应用是对有限群体设计，仅限于公司部分员工和合作伙伴使用；
+3、应用程序没有功能对公众使用；
+4、只在中国发布应用程序；
+5、App登录账号通过我们公司分配，只有分配的账号可以登录和使用App；
+6、应用程序无付费内容
+
+Guideline 2.3.3
+1、我已补充应用截图
+
+Guideline 3.2.1：
+1、营业执照见下方附件（统一社会信用代码：91440300MA5EHQXP7P），营业执照可在这个网站核实：https://www.gsxt.gov.cn/index.html。
+2、应用程序服务条款在登录页面，详情请看下方附件。
+3、用户在应用中发生的一切行为都用户服务协议中供其提前知情，登录页面必须勾选了用户服务协议才可以登录app。用户如在使用过程有疑问和争议，可以通过app的工作台-帮助中心，进行意见反馈，入口见下方附件。
+4、我方对可能发生争议的地方会有相关合同和协议说明，用户使用该服务会提前知情。如使用用户征信审查前，需要用户签署《征信授权书》，如附件。
+
+Guideline 5.1.5：
+我们的app已优化登录逻辑，没有定位也可以登录。
+
+以上为审核要求的信息说明，相关文件已经添加到附件，为了不耽误后续业务开展，请尽快审核，谢谢！
+
+
+启航：模板引擎
+
+release {
+            storeFile file('./kyf.keystore')
+            storePassword "229720"
+            keyAlias "kong"
+            keyPassword "229720"
+
+        }
+        debug {
+
+            storeFile file('./kyf.keystore')
+            storePassword "229720"
+            keyAlias "kong"
+            keyPassword "229720"
+
+        }
+
+//   String tempMp3Path = first.path?.replaceAll('.awb', '.mp3') ?? '';
+        //   //格式转换成mp3
+        //   await FlutterSoundHelper()
+        //       .convertFile(first.path, Codec.amrWB, tempMp3Path, Codec.mp3);
+        //   b = await MultipartFile.fromFile(tempMp3Path,
+        //       filename: firstName.replaceAll('.awb', '.mp3'));
+
+
+webPage 定位结果：{callbackTime: 2022-01-19 13:42:45, locationTime: 2022-01-19 13:42:45, locationType: 5, latitude: 22.569813, longitude: 114.064448, accuracy: 30.0, altitude: 0.0, bearing: 0.0, speed: 0.0, country: 中国, province: 广东省, city: 深圳市, district: 福田区, street: 林丰路, streetNumber: 10号, cityCode: 0755, adCode: 440304, address: 广东省深圳市福田区林丰路10号靠近深政汽修大厦, description: 在深政汽修大厦附近}
+
+定位结果：{callbackTime: 2022-01-19 13:41:34, locationTime: 2022-01-19 13:41:34, locationType: 5, latitude: 22.569811, longitude: 114.064449, accuracy: 36.0, altitude: 0.0, bearing: 0.0, speed: 0.0, country: 中国, province: 广东省, city: 深圳市, district: 福田区, street: 林丰路, streetNumber: 10号, cityCode: 0755, adCode: 440304, address: 广东省深圳市福田区林丰路10号靠近深政汽修大厦, description: 在深政汽修大厦附近}
+
+定位结果：{speed: -1.0, longitude: 113.900470, locationType: 1, bearing: -1.0, latitude: 22.530553, locTime: 2022-06-09 16:36:55, accuracy: 65.0, callbackTime: 2022-06-09 16:37:07, altitude: 8.789162874221802}
+
+{code: 0, message: 识别成功, data: {idCardInfo: {address: 河南省洛宁县河底乡窑头村一组, num: 41032819920715901X, birth: 19920715, name: 孔亚峰, sex: 男, nationality: 汉, startDate: 20180515, endDate: 20280515, issue: 洛宁县公安局, isFake: false, success: true, faceObjectId: 2201/0618/6792a12cf7c241cc9a3c12cdc0a58710, backObjectId: 2201/0618/fea3584672404f0699544c675477a0db}, vinInfo: null, bankCard: null}, success: true}
+
+
+
+验证码登录  api/app/login/msg/send
+宝德电子签  api/app/efqOrderSign/sendSms
+e分期短信发送  api/app/efqOrderSign/sendSms
+新建查大数据获取验证码  api/app/bigDataSign/auth/sms
+h5签约短信发送  api/app/orderH5Sign/sendSms
+请款阶段获取验证码  api/app/orderSign/auth/sms
+
+销售准入绑定手机号  api/app/login/msg/send
+销售准入电子签约
+新设备注册  api/app/login/msg/send
+修改密码  api/app/user/send/reset/password
+注销账号发送验证码确认
+
+HttpUtil.instance
+          .get(Api.eSign +
+              '?appId=7438884734&secret=fdbb7649a107aaf1828f91b9d06bfd4a&grantType=client_credentials')
+          .then((tokenData) {
+        //获取token
+        String token = tokenData['data']?['token'] ?? '';
+        LogUtil.d("E签宝token：$token");
+        Map<String, dynamic> header = Map();
+        header['X-Tsign-Open-App-Id'] = '7438884734';
+        header['X-Tsign-Open-Token'] = token;
+        //创建账号
+        HttpUtil.instance.post(Api.eSignCreate, optionHeaders: header, data: {
+          'thirdPartyUserId': '41032819920715901X',
+          'name': '孔亚峰'
+        }).then((value) {
+          String accountId = value['data']?['accountId'] ?? '';
+          LogUtil.d('E签宝accountId: $accountId');
+          //获取人脸认证h5链接
+          HttpUtil.instance
+              .post(Api.eSignH5(accountId), optionHeaders: header, data: {
+            'accountId': accountId,
+            'authType': 'PSN_FACEAUTH_BYURL',
+          }).then((result) {
+            String shortUrl = result['data']?['shortLink'] ?? '';
+            LogUtil.d('E签宝shortUrl: $shortUrl');
+            Navigator.pushNamed(context, "/webView",
+                arguments: {"url": shortUrl, "title": title});
+          });
+        });
+      });
+
+static String eSign = "https://smlopenapi.esign.cn/v1/oauth2/access_token";
+
+  //e签宝创建账号
+  static String eSignCreate =
+      "https://smlopenapi.esign.cn/v1/accounts/createByThirdPartyUserId";
+
+  static String eSignH5(String accountId) {
+    return "https://smlopenapi.esign.cn/v2/identity/auth/web/$accountId/indivIdentityUrl";
+  }
+
+  static String faceSign = "http://120.132.224.81:18180/tosignserver/a/biy2am";
+
+
+videoImage
+multiType
+orderNo
+imageCode
+
+fileType
+url
+imageName
+thumbUrl
+must
+
+
+预览
+orderNo
+imageType
+imageName
+imageCode
+fileType
+url
+videoImage
+
+
+
+{
+    code: 0,
+    message: null,
+    data: [{
+        id: 1496331455012253698,
+        orderNo: null,
+        stage: 抵押,
+        orderStatus: 待抵押审核,
+        targetStatus: 流程完成,
+        remark: 抵押审核通过,
+        innerRemark: null,
+        type: PASS,
+        createTime: 2022 / 02 / 23 11: 49,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496331425777954818,
+        orderNo: null,
+        stage: 抵押,
+        orderStatus: 待抵押提交,
+        targetStatus: 待抵押审核,
+        remark: 等待抵押审核,
+        innerRemark: null,
+        type: SUBMIT,
+        createTime: 2022 / 02 / 23 11: 49,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496330785215459330,
+        orderNo: null,
+        stage: 请款,
+        orderStatus: 待放款审核,
+        targetStatus: 待抵押提交,
+        remark: 请款审核通过,
+        innerRemark: null,
+        type: PASS,
+        createTime: 2022 / 02 / 23 11: 47,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496330740957163521,
+        orderNo: null,
+        stage: 请款,
+        orderStatus: 待放款提交,
+        targetStatus: 待放款审核,
+        remark: 等待放款审核审核,
+        innerRemark: null,
+        type: SUBMIT,
+        createTime: 2022 / 02 / 23 11: 47,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496327539583332354,
+        orderNo: null,
+        stage: 签约,
+        orderStatus: 待签约审核,
+        targetStatus: 待放款提交,
+        remark: 签约审核通过,
+        innerRemark: null,
+        type: PASS,
+        createTime: 2022 / 02 / 23 11: 34,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496327508784558082,
+        orderNo: null,
+        stage: 签约,
+        orderStatus: 待签约提交,
+        targetStatus: 待签约审核,
+        remark: 等待签约审核,
+        innerRemark: null,
+        type: SUBMIT,
+        createTime: 2022 / 02 / 23 11: 34,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496327083834454018,
+        orderNo: null,
+        stage: 申请,
+        orderStatus: 待申请审核,
+        targetStatus: 待签约提交,
+        remark: 申请审核通过,
+        innerRemark: null,
+        type: PASS,
+        createTime: 2022 / 02 / 23 11: 32,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496327048224813058,
+        orderNo: null,
+        stage: 申请,
+        orderStatus: 待申请提交,
+        targetStatus: 待申请审核,
+        remark: 等待申请审核,
+        innerRemark: null,
+        type: SUBMIT,
+        createTime: 2022 / 02 / 23 11: 32,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496323963674931202,
+        orderNo: null,
+        stage: 预审,
+        orderStatus: 待预审审核,
+        targetStatus: 待申请提交,
+        remark: 预审审核通过,
+        innerRemark: null,
+        type: PASS,
+        createTime: 2022 / 02 / 23 11: 20,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }, {
+        id: 1496323908893126657,
+        orderNo: null,
+        stage: 预审,
+        orderStatus: 新建待提交,
+        targetStatus: 待预审审核,
+        remark: 等待预审审核,
+        innerRemark: null,
+        type: SUBMIT,
+        createTime: 2022 / 02 / 23 11: 19,
+        isButton: null,
+        updateTime: null,
+        approvalUserId: 983,
+        approvalUserName: 运营审批岗
+    }],
+    success: true
+}
