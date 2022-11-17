@@ -54,12 +54,17 @@ class _StopwatchPageState extends State<StopwatchPage> {
   List<Widget> _buildActions() {
     return [
       PopupMenuButton(
+        padding: EdgeInsets.all(2),
+        constraints: BoxConstraints(minWidth: 0),
         itemBuilder: (context) {
           return [
             PopupMenuItem(
                 value: '设置',
+                padding: EdgeInsets.all(2),
+                height: 20,
                 child: Center(
-                  child: Text('设置'),
+                  child: Text('设置',
+                      style: TextStyle(fontSize: 14, color: Colors.black)),
                 ))
           ];
         },

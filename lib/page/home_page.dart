@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_play/constant/widget_style.dart';
+import 'package:flutter_play/page/paint_test_page.dart';
+import 'package:flutter_play/page/paper_page.dart';
+import 'package:flutter_play/page/red_green_light_page.dart';
+import 'package:flutter_play/page/stopwatch_page.dart';
+import 'package:flutter_play/page/tilt_list_page.dart';
+import 'package:get/route_manager.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,12 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-  List<String> _items = [
-    '红绿灯',
-    '秒表',
-    '倾斜列表',
-    '自定义',
-  ];
+  List<String> _items = ['红绿灯', '秒表', '倾斜列表', '自定义', 'paint'];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class _HomeState extends State<HomePage> {
       body: ListView.separated(
           itemBuilder: (context, index) {
             return InkWell(
-                onTap: () {},
+                onTap: () => _onItemTap(index),
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
@@ -46,5 +47,19 @@ class _HomeState extends State<HomePage> {
           },
           itemCount: _items.length),
     );
+  }
+
+  void _onItemTap(int index) {
+    if (index == 0) {
+      Get.to(RedGreenLightPage());
+    } else if (index == 1) {
+      Get.to(StopwatchPage());
+    } else if (index == 2) {
+      Get.to(TiltListPage());
+    } else if (index == 3) {
+      Get.to(PaintTestPage());
+    } else if (index == 4) {
+      Get.to(PaperPage());
+    }
   }
 }

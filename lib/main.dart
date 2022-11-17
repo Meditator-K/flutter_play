@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/route_manager.dart';
 
 import 'page/splash_page.dart';
 
@@ -20,7 +21,7 @@ void main() {
     ..backgroundColor = Colors.green
     ..textColor = Colors.white
     ..indicatorColor = Colors.green;
-  runApp(MyApp());
+  runApp(GetMaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -38,10 +39,10 @@ class MyApp extends StatelessWidget {
         const Locale('en', 'US'),
       ],
       locale: const Locale('zh'),
-      title: '选择',
+      title: '',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          appBarTheme: AppBarTheme(centerTitle: true)),
       home: SplashPage(),
       builder: EasyLoading.init(),
     );
