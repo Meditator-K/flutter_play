@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-  List<String> _items = ['红绿灯', '秒表', '倾斜列表', '自定义', '画笔练习', '画笔练习2'];
+  List<String> _items = ['红绿灯', '秒表', '倾斜列表', '自定义组件', '绘制练习', '绘制练习2'];
 
   @override
   Widget build(BuildContext context) {

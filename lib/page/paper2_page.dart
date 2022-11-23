@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'dart:typed_data';
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
@@ -51,6 +51,87 @@ class Paper2Paint extends CustomPainter {
     _drawRRect(canvas);
 
     _drawDRRect(canvas);
+
+    _drawCircle(canvas);
+
+    _drawShadow(canvas);
+
+    _drawPath(canvas);
+
+    _drawClip(canvas);
+  }
+
+  void _drawClip(Canvas canvas) {
+    canvas.save();
+    canvas.clipRect(
+        Rect.fromCenter(center: Offset(120, -80), width: 40, height: 30));
+    canvas.drawColor(Colors.red, BlendMode.darken);
+    canvas.restore();
+    canvas.save();
+    canvas.clipRRect(RRect.fromRectXY(
+        Rect.fromCenter(center: Offset(120, -40), width: 40, height: 30),
+        5,
+        5));
+    canvas.drawColor(Colors.blueGrey, BlendMode.darken);
+    canvas.restore();
+    canvas.save();
+    Path path = Path()
+      ..moveTo(100, -20)
+      ..lineTo(90, 10)
+      ..lineTo(120, 30)
+      ..close();
+    canvas.clipPath(path);
+    canvas.drawColor(Colors.orange, BlendMode.darken);
+    canvas.restore();
+  }
+
+  void _drawPath(Canvas canvas) {
+    canvas.save();
+    Paint paint = Paint()..color = Colors.blue;
+    Path path = Path()
+      ..moveTo(-140, -100)
+      ..lineTo(-100, -100)
+      ..lineTo(-140, -70)
+      ..lineTo(-100, -70)
+      ..close();
+    canvas.drawPath(path, paint);
+    canvas.translate(60, 0);
+    canvas.drawPath(
+        path,
+        paint
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2);
+    canvas.restore();
+  }
+
+  void _drawShadow(Canvas canvas) {
+    canvas.save();
+    Path path = Path()
+      ..moveTo(-120, -120)
+      ..lineTo(-40, -120)
+      ..lineTo(-70, -160)
+      ..close();
+    canvas.drawShadow(path, Colors.orange, 5, true);
+    canvas.translate(180, 0);
+    canvas.drawShadow(path, Colors.orange, 5, false);
+    canvas.restore();
+  }
+
+  void _drawCircle(Canvas canvas) {
+    Paint paint = Paint()..color = Colors.orange;
+    canvas.drawOval(
+        Rect.fromCenter(center: Offset(-120, 240), width: 80, height: 60),
+        paint);
+    canvas.drawArc(
+        Rect.fromCenter(center: Offset(0, 240), width: 80, height: 60),
+        0,
+        pi / 5 * 6,
+        true,
+        paint..color = Colors.green);
+    canvas.drawArc(Rect.fromLTWH(60, 200, 80, 80), pi / 6, 5 * pi / 3, true,
+        paint..color = Colors.yellow);
+    canvas.drawCircle(Offset(130, 240), 5, paint);
+    canvas.drawCircle(Offset(150, 240), 5, paint);
   }
 
   void _drawDRRect(Canvas canvas) {
@@ -141,9 +222,9 @@ class Paper2Paint extends CustomPainter {
       Offset(120, -250),
       Offset(150, -300),
     ];
-    canvas.drawPoints(PointMode.points, points, paint);
+    canvas.drawPoints(ui.PointMode.points, points, paint);
 
-    canvas.drawPoints(PointMode.polygon, points, paint..strokeWidth = 1);
+    canvas.drawPoints(ui.PointMode.polygon, points, paint..strokeWidth = 1);
   }
 
   void _drawRawPoints(Canvas canvas) {
@@ -169,8 +250,8 @@ class Paper2Paint extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 10
       ..strokeCap = StrokeCap.round;
-    canvas.drawRawPoints(PointMode.points, pos, paint);
-    canvas.drawRawPoints(PointMode.polygon, pos, paint..strokeWidth = 2);
+    canvas.drawRawPoints(ui.PointMode.points, pos, paint);
+    canvas.drawRawPoints(ui.PointMode.polygon, pos, paint..strokeWidth = 2);
   }
 
   void _drawDot(Canvas canvas) {
@@ -217,6 +298,23 @@ class Paper2Paint extends CustomPainter {
         Offset(0, size.height / 2), Offset(7, size.height / 2 - 10), paint);
     canvas.drawLine(
         Offset(0, size.height / 2), Offset(-7, size.height / 2 - 10), paint);
+    //给方格线画颜色
+    canvas.drawColor(Colors.blue, BlendMode.lighten);
+    //给画布画七彩水平渐变色
+    var colors = [
+      Color(0xFFF60C0C),
+      Color(0xFFF3B913),
+      Color(0xFFE7F716),
+      Color(0xFF3DF30B),
+      Color(0xFF0DF6EF),
+      Color(0xFF0829FB),
+      Color(0xFFB709F4),
+    ];
+    List<double> pos = [1.0 / 7, 2 / 7, 3 / 7, 4 / 7, 5 / 7, 6 / 7, 1];
+    paint.shader = ui.Gradient.linear(
+        Offset(-size.width / 2, 0), Offset(size.width / 2, 0), colors, pos);
+    paint.blendMode = BlendMode.lighten;
+    canvas.drawPaint(paint);
     canvas.restore();
   }
 
