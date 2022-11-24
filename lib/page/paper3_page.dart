@@ -61,9 +61,95 @@ class Paper3Paint extends CustomPainter {
     canvas.translate(size.width / 2, size.height / 2);
     _drawGrid(canvas, size);
     _drawAxis(canvas, size);
+
+    _drawScale(canvas, size);
+
     _drawImage(canvas);
     _drawImageRect(canvas);
     // _drawNineImage(canvas);
+    _drawParagraph(canvas, TextAlign.left, 'How are you');
+    canvas.save();
+    canvas.translate(0, 60);
+    _drawParagraph(canvas, TextAlign.center, 'I am fine');
+    canvas.restore();
+    canvas.save();
+    canvas.translate(0, 120);
+    _drawParagraph(canvas, TextAlign.right, 'And you');
+    canvas.restore();
+
+    _drawTextPainter(canvas);
+  }
+
+  //绘制刻度
+  void _drawScale(Canvas canvas, Size size) {
+    //x轴正方向，每2格一个刻度
+    for (double i = 0; i < size.width / 2; i += step * 2) {
+      _drawScaleText(canvas, i);
+    }
+    //x轴反方向
+    for (double i = -step * 2; i > -size.width / 2; i -= step * 2) {
+      _drawScaleText(canvas, i);
+    }
+    //y轴正方向
+    for (double i = step * 2; i < size.height / 2; i += step * 2) {
+      _drawScaleText(canvas, i, isX: false);
+    }
+    //y轴反方向
+    for (double i = -step * 2; i > -size.height / 2; i -= step * 2) {
+      _drawScaleText(canvas, i, isX: false);
+    }
+  }
+
+  void _drawScaleText(Canvas canvas, double i, {bool isX = true}) {
+    var textPainter = TextPainter(
+        text: TextSpan(
+            text: i.toStringAsFixed(0),
+            style: TextStyle(fontSize: 10, color: Colors.red)),
+        textDirection: TextDirection.ltr,
+        textAlign: TextAlign.center);
+    textPainter.layout();
+    Size size = textPainter.size;
+    if (isX) {
+      textPainter.paint(canvas, Offset(i - size.width / 2, 0));
+    } else {
+      textPainter.paint(canvas, Offset(0, i - size.height / 2 - 1));
+    }
+  }
+
+  void _drawTextPainter(Canvas canvas) {
+    Paint textPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..color = Colors.orange
+      ..strokeWidth = 1;
+    var textPainter = TextPainter(
+        text: TextSpan(
+          text: '把酒问青天',
+          style: TextStyle(fontSize: 25, foreground: textPaint),
+        ),
+        textDirection: TextDirection.rtl,
+        textAlign: TextAlign.center);
+    textPainter.layout(minWidth: 160);
+    Size size = textPainter.size; //必须在layout之后
+    canvas.drawRect(
+        Rect.fromCenter(
+            center: Offset(0, 180 + size.height / 2),
+            width: 160,
+            height: size.height),
+        _paint..color = Colors.blue.withOpacity(0.2));
+    textPainter.paint(canvas, Offset(-size.width / 2, 180));
+  }
+
+  void _drawParagraph(Canvas canvas, TextAlign textAlign, String text) {
+    var builder = ui.ParagraphBuilder(ui.ParagraphStyle(
+        textAlign: textAlign, fontSize: 25, textDirection: TextDirection.ltr));
+    builder.pushStyle(ui.TextStyle(
+        color: Colors.blue, textBaseline: ui.TextBaseline.alphabetic));
+    builder.addText(text);
+    ui.Paragraph paragraph = builder.build();
+    paragraph.layout(ui.ParagraphConstraints(width: 200));
+    canvas.drawParagraph(paragraph, Offset(-80, -280));
+    canvas.drawRect(Rect.fromLTWH(-80, -280, 200, 25),
+        _paint..color = Colors.blue.withOpacity(0.2));
   }
 
   void _drawNineImage(Canvas canvas) {
@@ -98,9 +184,7 @@ class Paper3Paint extends CustomPainter {
       canvas.drawImageNine(
           image!,
           Rect.fromCenter(
-              center: Offset(image!.width / 2, 5),
-              width: 40,
-              height: 2),
+              center: Offset(image!.width / 2, 5), width: 40, height: 2),
           Rect.fromCenter(center: Offset(0, 0), width: 140, height: 80)
               .translate(0, 200),
           _paint);
