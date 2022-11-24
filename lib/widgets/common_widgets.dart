@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../constant/widget_style.dart';
+import 'dart:ui' as ui;
 
 AppBar commonAppbar(text,
     {double elevation: 3,
@@ -100,4 +101,9 @@ void showAlertDialog(BuildContext context, String content,
           ],
         );
       });
+}
+
+Future<ui.Image> loadImageFromAssets(String path) async {
+  ByteData byteData = await rootBundle.load(path);
+  return decodeImageFromList(byteData.buffer.asUint8List());
 }

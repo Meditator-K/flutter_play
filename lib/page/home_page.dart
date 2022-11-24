@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_play/constant/widget_style.dart';
 import 'package:flutter_play/page/paint_test_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
+import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
@@ -14,7 +15,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-  List<String> _items = ['红绿灯', '秒表', '倾斜列表', '自定义组件', '绘制练习', '绘制练习2'];
+  List<String> _items = [
+    '红绿灯',
+    '秒表',
+    '倾斜列表',
+    '自定义组件',
+    '绘制练习',
+    '绘制练习2',
+    '绘制图片文字'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +72,8 @@ class _HomeState extends State<HomePage> {
       Get.to(PaperPage());
     } else if (index == 5) {
       Get.to(Paper2Page());
+    } else if (index == 6) {
+      Get.to(Paper3Page());
     }
   }
 }
