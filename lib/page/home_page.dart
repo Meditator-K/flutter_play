@@ -3,6 +3,7 @@ import 'package:flutter_play/constant/widget_style.dart';
 import 'package:flutter_play/page/paint_test_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
+import 'package:flutter_play/page/paper4_page.dart';
 import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
@@ -22,7 +23,8 @@ class _HomeState extends State<HomePage> {
     '自定义组件',
     '绘制练习',
     '绘制练习2',
-    '绘制图片文字'
+    '绘制图片文字',
+    'Path绘制',
   ];
 
   @override
@@ -74,6 +76,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper2Page());
     } else if (index == 6) {
       Get.to(Paper3Page());
+    } else if (index == 7) {
+      Get.to(Paper4Page());
     }
   }
 }
