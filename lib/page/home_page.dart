@@ -5,6 +5,7 @@ import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
 import 'package:flutter_play/page/paper5_page.dart';
+import 'package:flutter_play/page/paper6_page.dart';
 import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
@@ -27,6 +28,7 @@ class _HomeState extends State<HomePage> {
     '绘制图片文字',
     'Path绘制',
     'Path绘制2',
+    'Path绘制3',
   ];
 
   @override
@@ -82,6 +84,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper4Page());
     } else if (index == 8) {
       Get.to(Paper5Page());
+    } else if (index == 9) {
+      Get.to(Paper6Page());
     }
   }
 }

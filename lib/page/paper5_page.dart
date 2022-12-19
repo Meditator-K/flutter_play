@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_play/common/coordinate.dart';
@@ -8,7 +9,7 @@ class Paper5Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Paint4'),
+          title: Text('Paint5'),
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -65,13 +66,76 @@ class Paper5Paint extends CustomPainter {
       ..lineTo(-120, 100);
     canvas.drawPath(path, paint);
 
-    Path path1= Path()..moveTo(60, -120)
-    ..relativeLineTo(0, -100)
-    ..relativeLineTo(-40, 60)
-    ..close();
+    Path path1 = Path()
+      ..moveTo(60, -120)
+      ..relativeLineTo(0, -100)
+      ..relativeLineTo(-40, 60)
+      ..close();
     canvas.drawPath(path1, paint);
     canvas.drawPath(path1.shift(Offset(60, 0)), paint);
     print('点1是否在路径1内：${path1.contains(Offset(30, -20))}');
+    Rect rect = path1.getBounds();
+    canvas.drawRect(rect, paint..color = Colors.amberAccent);
+    canvas.save();
+    Path path2 = Path()
+      ..moveTo(0, 0)
+      ..relativeLineTo(-10, 40)
+      ..relativeLineTo(10, -10)
+      ..relativeLineTo(10, 10)
+      ..close();
+    for (int i = 0; i < 8; i++) {
+      canvas.drawPath(
+          path2.transform(Matrix4.rotationZ(i * pi / 4).storage),
+          paint
+            ..color = Colors.purple
+            ..style = PaintingStyle.fill);
+    }
+
+    Path path3 = Path()
+      ..moveTo(0, 180)
+      ..relativeLineTo(-20, 60)
+      ..relativeLineTo(20, -10)
+      ..relativeLineTo(20, 10)
+      ..close();
+    Path pathOval = Path()
+      ..addOval(Rect.fromCenter(center: Offset(0, 180), width: 30, height: 30));
+    canvas.drawPath(Path.combine(PathOperation.union, path3, pathOval), paint);
+    canvas.translate(60, 0);
+    canvas.drawPath(
+        Path.combine(PathOperation.difference, path3, pathOval), paint);
+    canvas.translate(60, 0);
+    canvas.drawPath(
+        Path.combine(PathOperation.intersect, path3, pathOval), paint);
+    canvas.translate(-60 * 3, 0);
+    canvas.drawPath(
+        Path.combine(PathOperation.reverseDifference, path3, pathOval), paint);
+    canvas.translate(-60, 0);
+    canvas.drawPath(Path.combine(PathOperation.xor, path3, pathOval), paint);
+    canvas.restore();
+
+    Path path4 = Path()
+      ..moveTo(-100, -180)
+      ..relativeLineTo(-30, 100)
+      ..relativeLineTo(30, -15)
+      ..relativeLineTo(30, 15)
+      ..close();
+    path4.addOval(
+        Rect.fromCenter(center: Offset(-100, -180), width: 60, height: 60));
+
+    canvas.drawPath(path4, paint..style = PaintingStyle.stroke);
+    PathMetrics pms = path4.computeMetrics();
+    pms.forEach((pm) {
+      print('长度：${pm.length}, 索引：${pm.contourIndex}， 是否闭合：${pm.isClosed}');
+      Tangent? tg = pm.getTangentForOffset(pm.length * 0.5);
+      if (tg != null) {
+        canvas.drawCircle(
+            tg.position,
+            5,
+            paint
+              ..color = Colors.blue
+              ..style = PaintingStyle.fill);
+      }
+    });
   }
 
   @override
