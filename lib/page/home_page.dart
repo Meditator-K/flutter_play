@@ -12,6 +12,8 @@ import 'package:flutter_play/page/stopwatch_page.dart';
 import 'package:flutter_play/page/tilt_list_page.dart';
 import 'package:get/route_manager.dart';
 
+import 'paper7_page.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomeState();
@@ -29,6 +31,7 @@ class _HomeState extends State<HomePage> {
     'Path绘制',
     'Path绘制2',
     'Path绘制3',
+    'Color1',
   ];
 
   @override
@@ -86,6 +89,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper5Page());
     } else if (index == 9) {
       Get.to(Paper6Page());
+    } else if (index == 10) {
+      Get.to(Paper7Page());
     }
   }
 }

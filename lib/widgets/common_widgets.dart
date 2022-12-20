@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image/image.dart' as image;
 
 import '../constant/widget_style.dart';
 import 'dart:ui' as ui;
@@ -106,4 +107,11 @@ void showAlertDialog(BuildContext context, String content,
 Future<ui.Image> loadImageFromAssets(String path) async {
   ByteData byteData = await rootBundle.load(path);
   return decodeImageFromList(byteData.buffer.asUint8List());
+}
+
+Future<image.Image?> loadImageByImage(String path) async {
+  ByteData byteData = await rootBundle.load(path);
+  List<int> data = byteData.buffer
+      .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
+  return image.decodeImage(data);
 }
