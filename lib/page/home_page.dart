@@ -6,6 +6,7 @@ import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
 import 'package:flutter_play/page/paper5_page.dart';
 import 'package:flutter_play/page/paper6_page.dart';
+import 'package:flutter_play/page/paper8_page.dart';
 import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
@@ -32,6 +33,7 @@ class _HomeState extends State<HomePage> {
     'Path绘制2',
     'Path绘制3',
     'Color1',
+    'Color2',
   ];
 
   @override
@@ -91,6 +93,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper6Page());
     } else if (index == 10) {
       Get.to(Paper7Page());
+    }else if (index == 11) {
+      Get.to(Paper8Page());
     }
   }
 }
