@@ -7,6 +7,7 @@ import 'package:flutter_play/page/paper4_page.dart';
 import 'package:flutter_play/page/paper5_page.dart';
 import 'package:flutter_play/page/paper6_page.dart';
 import 'package:flutter_play/page/paper8_page.dart';
+import 'package:flutter_play/page/paper9_page.dart';
 import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
@@ -34,6 +35,7 @@ class _HomeState extends State<HomePage> {
     'Path绘制3',
     'Color1',
     'Color2',
+    '吃豆人',
   ];
 
   @override
@@ -63,7 +65,7 @@ class _HomeState extends State<HomePage> {
           separatorBuilder: (context, index) {
             return Container(
               color: Colors.grey.withOpacity(0.2),
-              height: 8,
+              height: 3,
             );
           },
           itemCount: _items.length),
@@ -93,8 +95,10 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper6Page());
     } else if (index == 10) {
       Get.to(Paper7Page());
-    }else if (index == 11) {
+    } else if (index == 11) {
       Get.to(Paper8Page());
+    } else if (index == 12) {
+      Get.to(Paper9Page());
     }
   }
 }

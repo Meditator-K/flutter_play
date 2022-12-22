@@ -42,6 +42,12 @@ class Paper8State extends State<Paper8Page> {
           color: Colors.white,
           child: CustomPaint(
             painter: Paper8Paint(img: _image),
+            child: Padding(
+                padding: EdgeInsets.only(top: 30, left: 30),
+                child: Text(
+                  '啦啦啦',
+                  style: TextStyle(fontSize: 18, color: Colors.blue),
+                )),
           ),
         ));
   }
