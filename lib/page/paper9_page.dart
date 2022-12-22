@@ -23,9 +23,18 @@ class Paper9State extends State<Paper9Page> {
             spacing: 20,
             runSpacing: 20,
             children: List.generate(6, (index) {
+              Color color = Colors.blue;
+              double angle = 30;
+              if (index == 2) {
+                color = Colors.green;
+                angle = 20;
+              } else if (index == 4) {
+                color = Colors.deepPurple;
+                angle = 50;
+              }
               return PacMan(
-                color: Colors.orange,
-                angle: (index + 1) * 6,
+                color: color,
+                angle: angle,
               );
             }),
           ),

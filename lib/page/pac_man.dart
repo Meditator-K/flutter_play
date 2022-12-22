@@ -40,11 +40,11 @@ class PacManState extends State<PacMan> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: Size(100, 100),
-      // painter: PacManPaint(
-      //     color: _colorCtrl, angle: _angleCtrl, repaint: _controller)
-      painter: PacMan2Paint(repaint: _controller),
-    );
+        size: Size(100, 100),
+        painter: PacManPaint(
+            color: _colorCtrl, angle: _angleCtrl, repaint: _controller)
+        // painter: PacMan2Paint(repaint: _controller),
+        );
   }
 }
 
