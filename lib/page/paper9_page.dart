@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_play/page/pac_man.dart';
+import 'package:flutter_play/page/pac_man2.dart';
 
 class Paper9Page extends StatefulWidget {
   @override
@@ -23,6 +24,9 @@ class Paper9State extends State<Paper9Page> {
             spacing: 20,
             runSpacing: 20,
             children: List.generate(6, (index) {
+              if (index == 0) {
+                return PacMan2();
+              }
               Color color = Colors.blue;
               double angle = 30;
               if (index == 2) {
