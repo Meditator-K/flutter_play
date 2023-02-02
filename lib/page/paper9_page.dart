@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_play/page/pac_man.dart';
-import 'package:flutter_play/page/pac_man2.dart';
+import 'package:flutter_play/widgets/pac_man.dart';
+import 'package:flutter_play/widgets/pac_man2.dart';
 
 class Paper9Page extends StatefulWidget {
   @override

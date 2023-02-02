@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_play/page/curve_box.dart';
+import 'package:flutter_play/widgets/curve_box.dart';
 
 class Paper10Page extends StatefulWidget {
   @override
