@@ -33,16 +33,21 @@ class HandleWidgetState extends State<HandleWidget>
   Widget build(BuildContext context) {
     return GestureDetector(
         onPanDown: _onDown,
-        onPanCancel: _onCancel,
+        onPanEnd: _onEnd,
         onPanUpdate: _onUpdate,
         child: CustomPaint(
             size: Size(widget.size, widget.size),
-            painter: HandlePainter(handleR: widget.handleRadius)));
+            painter: HandlePainter(
+                handleR: widget.handleRadius, offset: this._offset)));
   }
 
-  void _onDown(DragDownDetails details) {}
+  void _onDown(DragDownDetails details) {
+    print('点击：${details.localPosition}');
+    print('点击global：${details.globalPosition}');
+    _offset.value = details.localPosition;
+  }
 
-  void _onCancel() {
+  void _onEnd(DragEndDetails details) {
     _offset.value = Offset.zero;
   }
 
@@ -51,14 +56,14 @@ class HandleWidgetState extends State<HandleWidget>
 
 class HandlePainter extends CustomPainter {
   final double handleR;
-  Paint _paint = Paint();
+  final ValueNotifier<Offset> offset;
+  Paint _paint = Paint()
+    ..color = Colors.blue
+    ..style = PaintingStyle.fill
+    ..isAntiAlias = true;
 
-  HandlePainter({required this.handleR}) {
-    _paint
-      ..color = Colors.blue
-      ..style = PaintingStyle.fill
-      ..isAntiAlias = true;
-  }
+  HandlePainter({required this.handleR, required this.offset})
+      : super(repaint: offset);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -68,11 +73,11 @@ class HandlePainter extends CustomPainter {
     canvas.drawCircle(
         Offset.zero, bigR, _paint..color = _paint.color.withAlpha(100));
     canvas.drawCircle(
-        Offset.zero, handleR, _paint..color = _paint.color.withAlpha(150));
+        offset.value, handleR, _paint..color = _paint.color.withAlpha(150));
   }
 
   @override
   bool shouldRepaint(covariant HandlePainter oldDelegate) {
-    return oldDelegate.handleR != handleR;
+    return oldDelegate.handleR != handleR || oldDelegate.offset != offset;
   }
 }
