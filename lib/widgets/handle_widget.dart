@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 class HandleWidget extends StatefulWidget {
   final double size; //控件大小
   final double handleRadius; //控制小球半径
+  final Function(double angle) onMove;
 
-  HandleWidget({Key? key, this.size = 100, this.handleRadius = 12})
+  HandleWidget(
+      {Key? key, this.size = 100, this.handleRadius = 12, required this.onMove})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() => HandleWidgetState();
 }
 
-class HandleWidgetState extends State<HandleWidget>
-    with SingleTickerProviderStateMixin {
+class HandleWidgetState extends State<HandleWidget> {
   ValueNotifier<Offset> _offset = ValueNotifier(Offset.zero);
 
   @override
@@ -32,7 +33,7 @@ class HandleWidgetState extends State<HandleWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onPanDown: _onDown,
+        // onPanDown: _onDown,
         onPanEnd: _onEnd,
         onPanUpdate: _onUpdate,
         child: CustomPaint(
@@ -41,16 +42,17 @@ class HandleWidgetState extends State<HandleWidget>
                 handleR: widget.handleRadius, offset: this._offset)));
   }
 
-  void _onDown(DragDownDetails details) {
-    print('点击：${details.localPosition}');
-    print('点击global：${details.globalPosition}');
-    Offset offset =
-        details.localPosition.translate(-widget.size / 2, -widget.size / 2);
-    _offset.value = _parserOffset(offset);
-  }
+  // void _onDown(DragDownDetails details) {
+  //   print('点击：${details.localPosition}');
+  //   print('点击global：${details.globalPosition}');
+  //   Offset offset =
+  //       details.localPosition.translate(-widget.size / 2, -widget.size / 2);
+  //   _offset.value = _parserOffset(offset);
+  // }
 
   void _onEnd(DragEndDetails details) {
     _offset.value = Offset.zero;
+    widget.onMove(0);
   }
 
   void _onUpdate(DragUpdateDetails details) {
@@ -61,6 +63,7 @@ class HandleWidgetState extends State<HandleWidget>
 
   Offset _parserOffset(Offset offset) {
     //计算，小圆圆心，不能超出大圆范围
+    widget.onMove(atan2(offset.dy, offset.dx));
     double bigR = widget.size / 2 - widget.handleRadius;
     if (offset.distance > bigR) {
       double dx = offset.dx;
