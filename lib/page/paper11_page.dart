@@ -10,6 +10,7 @@ class Paper11Page extends StatefulWidget {
 
 class Paper11State extends State<Paper11Page> {
   double _angle = 0;
+  String _ruleText = '';
 
   @override
   void initState() {
@@ -23,7 +24,9 @@ class Paper11State extends State<Paper11Page> {
         title: Text('手势使用'),
       ),
       body: Center(
-        child: Column(mainAxisSize:MainAxisSize.min,children: [
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -49,14 +52,25 @@ class Paper11State extends State<Paper11Page> {
               )
             ],
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 40),
           RulerWidget(
             onChange: (double dx) {
               print('当前刻度：$dx');
+              setState(() {
+                _ruleText = dx.toStringAsFixed(0);
+              });
             },
-          )
-        ],)
-      ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            '当前刻度：$_ruleText',
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.indigo),
+          ),
+        ],
+      )),
     );
   }
 }
