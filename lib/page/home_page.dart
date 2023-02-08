@@ -3,6 +3,7 @@ import 'package:flutter_play/constant/widget_style.dart';
 import 'package:flutter_play/page/paint_test_page.dart';
 import 'package:flutter_play/page/paper10_page.dart';
 import 'package:flutter_play/page/paper11_page.dart';
+import 'package:flutter_play/page/paper12_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
@@ -40,6 +41,7 @@ class _HomeState extends State<HomePage> {
     '吃豆人',
     '动画器曲线',
     '手势使用',
+    '路径曲线',
   ];
 
   @override
@@ -107,6 +109,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper10Page());
     } else if (index == 14) {
       Get.to(Paper11Page());
+    } else if (index == 15) {
+      Get.to(Paper12Page());
     }
   }
 }
