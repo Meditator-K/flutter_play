@@ -4,6 +4,8 @@ import 'package:flutter_play/page/paint_test_page.dart';
 import 'package:flutter_play/page/paper10_page.dart';
 import 'package:flutter_play/page/paper11_page.dart';
 import 'package:flutter_play/page/paper12_page.dart';
+import 'package:flutter_play/page/paper13_page.dart';
+import 'package:flutter_play/page/paper14_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
@@ -42,6 +44,8 @@ class _HomeState extends State<HomePage> {
     '动画器曲线',
     '手势使用',
     '路径曲线',
+    '贝塞尔曲线',
+    '贝塞尔曲线2',
   ];
 
   @override
@@ -51,11 +55,17 @@ class _HomeState extends State<HomePage> {
         title: Text('Flutter Play'),
         centerTitle: true,
       ),
-      body: ListView.separated(
+      body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: 15,
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              childAspectRatio: 1.5),
           itemBuilder: (context, index) {
             return InkWell(
                 onTap: () => _onItemTap(index),
                 child: Container(
+                  color: Colors.grey.withAlpha(50),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(vertical: 15),
@@ -68,12 +78,12 @@ class _HomeState extends State<HomePage> {
                   ),
                 ));
           },
-          separatorBuilder: (context, index) {
-            return Container(
-              color: Colors.grey.withOpacity(0.2),
-              height: 3,
-            );
-          },
+          // separatorBuilder: (context, index) {
+          //   return Container(
+          //     color: Colors.grey.withOpacity(0.2),
+          //     height: 3,
+          //   );
+          // },
           itemCount: _items.length),
     );
   }
@@ -111,6 +121,10 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper11Page());
     } else if (index == 15) {
       Get.to(Paper12Page());
+    } else if (index == 16) {
+      Get.to(Paper13Page());
+    } else if (index == 17) {
+      Get.to(Paper14Page());
     }
   }
 }
