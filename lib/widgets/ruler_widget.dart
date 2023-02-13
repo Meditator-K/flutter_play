@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 //刻度尺组件
 class RulerWidget extends StatefulWidget {
