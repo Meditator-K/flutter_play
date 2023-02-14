@@ -23,8 +23,7 @@ class Paper15State extends State<Paper15Page> {
         appBar: AppBar(
           title: Text('贝塞尔波纹'),
         ),
-        body: GestureDetector(
-            child: Center(
+        body: Center(
           child: Wrap(
             spacing: 30,
             runSpacing: 30,
@@ -43,6 +42,6 @@ class Paper15State extends State<Paper15Page> {
                       ][index % 5],
                     )),
           ),
-        )));
+        ));
   }
 }
