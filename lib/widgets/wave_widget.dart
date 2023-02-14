@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_play/common/coordinate.dart';
 
 ///波纹组件
 class WaveWidget extends StatefulWidget {
   final Size size;
-  final double width;
-  final double height;
+  final double waveHeight;
   final Color color;
   final Duration duration;
   final Curve curve;
+  final double progress;
+  final double strokeWidth;
+  final double borderRadius;
+  final bool isOval; //是否椭圆
+  final int secondAlpha; //底波透明度
 
   WaveWidget(
       {Key? key,
       this.size = const Size(100, 100),
-      this.width = 60,
-      this.height = 12,
+      this.waveHeight = 12,
       this.color = Colors.blue,
-      this.duration = const Duration(milliseconds: 500),
-      this.curve = Curves.linear})
+      this.duration = const Duration(milliseconds: 1000),
+      this.curve = Curves.linear,
+      this.progress = 0,
+      this.strokeWidth = 3,
+      this.borderRadius = 20,
+      this.isOval = false,
+      this.secondAlpha = 88})
       : super(key: key);
 
   @override
@@ -46,58 +53,104 @@ class WaveState extends State<WaveWidget> with SingleTickerProviderStateMixin {
       size: widget.size,
       painter: WavePaint(
           repaint: CurveTween(curve: widget.curve).animate(_controller),
-          waveWidth: widget.width,
-          waveHeight: widget.height,
-          color: widget.color),
+          waveHeight: widget.waveHeight,
+          color: widget.color,
+          progress: widget.progress,
+          strokeWidth: widget.strokeWidth,
+          borderRadius: widget.borderRadius,
+          isOval: widget.isOval,
+          secondAlpha: widget.secondAlpha),
     );
   }
 }
 
 class WavePaint extends CustomPainter {
-  // Coordinate _coordinate = Coordinate();
   final Animation<double> repaint;
-  Paint _paint = Paint()
-    ..color = Colors.blue
-    ..style = PaintingStyle.fill;
-  final double waveWidth;
+  Paint _paint = Paint();
+  Path _wavePath = Path();
   final double waveHeight;
   final Color color;
+  final double progress;
+  final double strokeWidth;
+  final double borderRadius;
+  final bool isOval; //是否椭圆
+  final int secondAlpha; //底波透明度
+
+  double waveWidth = 0;
+  double wrapHeight = 0;
 
   WavePaint(
       {required this.repaint,
-      required this.waveWidth,
       required this.waveHeight,
-      required this.color})
+      required this.color,
+      required this.progress,
+      required this.strokeWidth,
+      required this.borderRadius,
+      required this.isOval,
+      required this.secondAlpha})
       : super(repaint: repaint);
 
   @override
   void paint(Canvas canvas, Size size) {
-    // _coordinate.paint(canvas, size);
-    // canvas.translate(size.width / 2, size.height / 2);
+    _wavePath.reset();
+    waveWidth = size.width / 2;
+    wrapHeight = size.height;
+    _paint
+      ..strokeWidth = strokeWidth
+      ..color = color
+      ..style = PaintingStyle.stroke;
 
-    canvas.clipRect(Rect.fromCenter(
-        center: Offset(waveWidth, 0), width: size.width, height: size.height));
+    Path path = Path();
+    if (isOval) {
+      path.addOval(Offset(0, 0) & size);
+    } else {
+      path.addRRect(
+          RRect.fromRectXY(Offset(0, 0) & size, borderRadius, borderRadius));
+    }
+    canvas.clipPath(path);
+    canvas.drawPath(path, _paint);
 
-    //绘制曲线
-    Path path = Path()
-      ..moveTo(0, 0)
-      ..relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0)
-      ..relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0)
-      ..relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0)
-      ..relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0)
-      ..relativeQuadraticBezierTo(waveWidth / 2, -waveHeight * 2, waveWidth, 0)
-      ..relativeQuadraticBezierTo(waveWidth / 2, waveHeight * 2, waveWidth, 0)
-      ..relativeLineTo(0, size.height / 2)
-      ..relativeLineTo(-waveWidth * 6, 0)
-      ..close();
+    canvas.translate(0, wrapHeight + waveHeight);
     canvas.translate(-4 * waveWidth + 2 * waveWidth * repaint.value, 0);
-    canvas.drawPath(path, _paint..color = color);
+    _setWavePath();
+    canvas.drawPath(
+        _wavePath,
+        _paint
+          ..color = color
+          ..style = PaintingStyle.fill);
     canvas.translate(2 * waveWidth * repaint.value, 0);
-    canvas.drawPath(path, _paint..color = color.withAlpha(88));
+    _setWavePath();
+    canvas.drawPath(_wavePath, _paint..color = color.withAlpha(secondAlpha));
+  }
+
+  void _setWavePath() {
+    _wavePath.moveTo(0, 0);
+    _wavePath.relativeLineTo(0, -wrapHeight * progress);
+    _wavePath.relativeQuadraticBezierTo(
+        waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _wavePath.relativeQuadraticBezierTo(
+        waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _wavePath.relativeQuadraticBezierTo(
+        waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _wavePath.relativeQuadraticBezierTo(
+        waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _wavePath.relativeQuadraticBezierTo(
+        waveWidth / 2, -waveHeight * 2, waveWidth, 0);
+    _wavePath.relativeQuadraticBezierTo(
+        waveWidth / 2, waveHeight * 2, waveWidth, 0);
+    _wavePath.relativeLineTo(0, wrapHeight);
+    _wavePath.relativeLineTo(-waveWidth * 6, 0);
   }
 
   @override
   bool shouldRepaint(WavePaint oldDelegate) {
-    return oldDelegate.repaint != repaint;
+    return oldDelegate.repaint != repaint ||
+        oldDelegate.secondAlpha != secondAlpha ||
+        oldDelegate.progress != progress ||
+        oldDelegate.waveWidth != waveWidth ||
+        oldDelegate.color != color ||
+        oldDelegate.borderRadius != borderRadius ||
+        oldDelegate.strokeWidth != strokeWidth ||
+        oldDelegate.isOval != isOval;
   }
 }

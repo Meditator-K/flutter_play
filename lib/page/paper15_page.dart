@@ -26,16 +26,21 @@ class Paper15State extends State<Paper15Page> {
         body: GestureDetector(
             child: Center(
           child: Wrap(
-            spacing: 40,
-            runSpacing: 20,
+            spacing: 30,
+            runSpacing: 30,
             children: List.generate(
-                6,
-                (e) => WaveWidget(
+                9,
+                (int index) => WaveWidget(
+                      waveHeight: 5,
+                      progress: index / 10.0 + 0.1,
+                      isOval: index % 3 == 0,
                       color: [
                         Colors.blue,
                         Colors.red,
-                        Colors.green
-                      ][(e * 10).toInt() % 3],
+                        Colors.green,
+                        Colors.orange,
+                        Colors.purple,
+                      ][index % 5],
                     )),
           ),
         )));
