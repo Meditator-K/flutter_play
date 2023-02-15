@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_play/widgets/bar_chart_widget.dart';
+import 'package:flutter_play/widgets/pie_chart_widget.dart';
 import 'package:flutter_play/widgets/wave_widget.dart';
 
 class Paper16Page extends StatefulWidget {
@@ -25,7 +26,14 @@ class Paper16State extends State<Paper16Page> {
           title: Text('统计图表'),
         ),
         body: Center(
-          child: BarChartWidget(),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BarChartWidget(),
+              const SizedBox(height: 50),
+              PieChartWidget()
+            ],
+          ),
         ));
   }
 }
