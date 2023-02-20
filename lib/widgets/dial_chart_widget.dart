@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class DialChartWidget extends StatefulWidget {
   final Size size;
 
-  DialChartWidget({Key? key, this.size = const Size(300, 280)})
+  DialChartWidget({Key? key, this.size = const Size(300, 300)})
       : super(key: key);
 
   @override
@@ -98,40 +98,41 @@ class DialChartPaint extends CustomPainter {
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic);
     //当前值
-    _drawText(canvas, '${value.toStringAsFixed(1)}', Offset(0, radius / 2),
+    _drawText(canvas, '${(value * repaint.value).toStringAsFixed(1)}',
+        Offset(0, radius / 2),
         fontColor: Colors.black, fontSize: 18);
     //表盘刻度数字
-    canvas.rotate(pi / 2);
+    //当前画布处于初始位置，中心点位于中点，x/y轴处于正常位置
+    //不能通过旋转画布绘制，否则刻度数字也会旋转
     canvas.save();
-    canvas.rotate(initAngle * pi / 180);
     double count = _kMax * _kScaleDensity;
-    // for (int i = _kMin; i <= count; i++) {
-    //   int scale = 0;
-    //   if (i % 10 == 0) {
-    //     scale = i;
-    //   }
-    //   if(scale%10==0){
-    //     String curText = (scale/_kScaleDensity).toStringAsFixed(0);
-    //     double curAngle =
-    //   Color scaleColor = _kColors[0];
-    //   if (i < count * _kColorStopRate) {
-    //     scaleColor = _kColors[0];
-    //   } else if (i < count * (1 - _kColorStopRate)) {
-    //     scaleColor = _kColors[1];
-    //   } else {
-    //     scaleColor = _kColors[2];
-    //   }
-    //   canvas.drawLine(Offset(radius - lineLen, 0),
-    //       Offset(radius + _kStrokeWidth / 2, 0), _linePaint..color = lineColor);
-    //   canvas.rotate(pi / 180 * _kAngle / (_kMax * _kScaleDensity));
-    //   }
-    // }
+    for (int i = _kMin; i <= count; i++) {
+      if (i % 10 == 0) {
+        String curText = (i / _kScaleDensity).toStringAsFixed(0);
+        double curAngle = pi / 180 * (90 + initAngle + _kAngle / count * i);
+        Color bgColor = _kColors[0];
+        if (i < count * _kColorStopRate) {
+          bgColor = _kColors[0];
+        } else if (i < count * (1 - _kColorStopRate)) {
+          bgColor = _kColors[1];
+        } else {
+          bgColor = _kColors[2];
+        }
+        _drawText(
+            canvas,
+            curText,
+            Offset((radius - _kScaleHeightLever3 - 10) * cos(curAngle),
+                (radius - _kScaleHeightLever3 - 10) * sin(curAngle)),
+            drawBg: true,
+            bgColor: bgColor);
+      }
+    }
     canvas.restore();
   }
 
   void _drawArrow(Canvas canvas, double radius) {
     canvas.save();
-    double curRate = value / _kMax;
+    double curRate = value * repaint.value / _kMax;
     canvas.rotate((curRate * _kAngle + (360 - _kAngle) / 2) * pi / 180);
     Path path = Path();
     path.moveTo(-12, 0);
@@ -207,6 +208,8 @@ class DialChartPaint extends CustomPainter {
   void _drawText(Canvas canvas, String text, Offset offset,
       {Color fontColor = Colors.white,
       double fontSize = 10,
+      bool drawBg = false,
+      Color bgColor = Colors.white,
       FontWeight? fontWeight,
       FontStyle? fontStyle}) {
     var textPaint = TextPainter(
@@ -221,6 +224,16 @@ class DialChartPaint extends CustomPainter {
                 color: fontColor)));
     textPaint.layout();
     Size size = textPaint.size;
+    if (drawBg) {
+      canvas.drawRRect(
+          RRect.fromRectAndRadius(
+              Rect.fromCenter(
+                  center: offset,
+                  width: size.width + 3,
+                  height: size.height + 2),
+              Radius.circular(3)),
+          Paint()..color = bgColor);
+    }
     textPaint.paint(canvas,
         Offset(offset.dx - size.width / 2, offset.dy - size.height / 2));
   }
