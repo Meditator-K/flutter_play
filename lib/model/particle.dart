@@ -27,4 +27,24 @@ class Particle {
     this.size = 0,
     this.color = Colors.black,
   });
+
+  Particle copyWith(
+      {double? x,
+      double? y,
+      double? ax,
+      double? ay,
+      double? vx,
+      double? vy,
+      double? size,
+      Color? color}) {
+    return Particle(
+        x: x ?? this.x,
+        y: y ?? this.y,
+        ax: ax ?? this.ax,
+        ay: ay ?? this.ay,
+        vx: vx ?? this.vx,
+        vy: vy ?? this.vy,
+        size: size ?? this.size,
+        color: color ?? this.color);
+  }
 }

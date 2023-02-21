@@ -72,4 +72,12 @@ class WidgetStyle {
   static int getRandom() {
     return Random().nextInt(9);
   }
+
+  // 获取随机色
+  static Color randomRGB({int limitR = 0, int limitG = 0, int limitB = 0,}) {
+    var r = limitR + Random().nextInt(256 - limitR); //红值
+    var g = limitG + Random().nextInt(256 - limitG); //绿值
+    var b = limitB + Random().nextInt(256 - limitB); //蓝值
+    return Color.fromARGB(255, r, g, b); //生成argb模式的颜色
+  }
 }
