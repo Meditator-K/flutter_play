@@ -17,16 +17,18 @@ class Particle {
 
   Color color; // 粒子颜色.
 
-  Particle({
-    this.x = 0,
-    this.y = 0,
-    this.ax = 0,
-    this.ay = 0,
-    this.vx = 0,
-    this.vy = 0,
-    this.size = 0,
-    this.color = Colors.black,
-  });
+  bool active; // 粒子是否可用
+
+  Particle(
+      {this.x = 0,
+      this.y = 0,
+      this.ax = 0,
+      this.ay = 0,
+      this.vx = 0,
+      this.vy = 0,
+      this.size = 0,
+      this.color = Colors.black,
+      this.active = true});
 
   Particle copyWith(
       {double? x,

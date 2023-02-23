@@ -10,6 +10,7 @@ import 'package:flutter_play/page/paper15_page.dart';
 import 'package:flutter_play/page/paper16_page.dart';
 import 'package:flutter_play/page/paper17_page.dart';
 import 'package:flutter_play/page/paper18_page.dart';
+import 'package:flutter_play/page/paper19_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
@@ -54,6 +55,7 @@ class _HomeState extends State<HomePage> {
     '统计图表',
     '仪表盘',
     '粒子运动',
+    '粒子时钟',
   ];
 
   @override
@@ -141,6 +143,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper17Page());
     } else if (index == 21) {
       Get.to(Paper18Page());
+    } else if (index == 22) {
+      Get.to(Paper19Page());
     }
   }
 }
