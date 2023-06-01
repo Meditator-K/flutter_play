@@ -25,6 +25,7 @@ import 'package:flutter_play/page/tilt_list_page.dart';
 import 'package:flutter_play/touch/spring_page.dart';
 import 'package:get/route_manager.dart';
 
+import '../touch/stamp_page.dart';
 import 'paper7_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,6 +59,7 @@ class _HomeState extends State<HomePage> {
     '粒子运动',
     '粒子时钟',
     '弹簧',
+    '绘制图章',
   ];
 
   @override
@@ -149,6 +151,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper19Page());
     } else if (index == 23) {
       Get.to(SpringPage());
+    } else if (index == 24) {
+      Get.to(StampPage());
     }
   }
 }
