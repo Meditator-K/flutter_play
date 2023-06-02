@@ -58,6 +58,10 @@ class StampCustomer extends CustomPainter {
   final StampData stampData;
 
   Paint _paint = Paint();
+  Paint _linePaint = Paint()
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 2
+    ..color = Colors.white;
 
   StampCustomer({required this.stampData}) : super(repaint: stampData);
 
@@ -65,7 +69,10 @@ class StampCustomer extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     stampData.stamps.forEach((element) {
       canvas.drawCircle(
-          element.center!, element.radius, _paint..color = element.color);
+          element.center, element.radius, _paint..color = element.color);
+      canvas.drawPath(element.path, _linePaint..color = Colors.white);
+      canvas.drawCircle(element.center, element.radius + 3,
+          _linePaint..color = element.color);
     });
   }
 
