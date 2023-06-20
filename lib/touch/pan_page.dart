@@ -130,7 +130,7 @@ class PanState extends State<PanPage> with SingleTickerProviderStateMixin {
 class PanCustomer extends CustomPainter {
   final PaintModel model;
 
-  Paint _paint = Paint();
+  Paint _paint = Paint()..strokeCap = StrokeCap.round;
 
   PanCustomer({required this.model}) : super(repaint: model);
 

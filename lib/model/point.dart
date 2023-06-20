@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -13,6 +14,10 @@ class Point {
   }
 
   Offset toOffset() => Offset(x, y);
+
+  Point operator -(Point other) => Point(x: x - other.x, y: y - other.y);
+
+  double get distance => sqrt(x * x + y * y);
 }
 
 enum PaintState { doing, done, hide }

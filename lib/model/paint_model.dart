@@ -13,8 +13,15 @@ class PaintModel extends ChangeNotifier {
     _lines.add(line);
   }
 
-  void pushPoint(Point point) {
+  //check 是否校验距离
+  void pushPoint(Point point, {bool check = true, double distance = 8}) {
     if (activeLine == null) return;
+    if (activeLine!.points.isNotEmpty && check) {
+      if ((point - activeLine!.points.last).distance < distance) {
+        //如果要添加的点距离最后一个点小于设定的距离，就不添加，避免点过密
+        return;
+      }
+    }
     activeLine!.points.add(point);
     notifyListeners();
   }
