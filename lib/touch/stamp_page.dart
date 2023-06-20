@@ -17,6 +17,7 @@ class StampState extends State<StampPage> with SingleTickerProviderStateMixin {
   @override
   void dispose() {
     super.dispose();
+    _stampData.dispose();
   }
 
   @override

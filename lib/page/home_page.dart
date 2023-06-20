@@ -22,6 +22,7 @@ import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
 import 'package:flutter_play/page/tilt_list_page.dart';
+import 'package:flutter_play/touch/pan_page.dart';
 import 'package:flutter_play/touch/spring_page.dart';
 import 'package:get/route_manager.dart';
 
@@ -60,6 +61,7 @@ class _HomeState extends State<HomePage> {
     '粒子时钟',
     '弹簧',
     '绘制图章',
+    '绘制文字',
   ];
 
   @override
@@ -153,6 +155,8 @@ class _HomeState extends State<HomePage> {
       Get.to(SpringPage());
     } else if (index == 24) {
       Get.to(StampPage());
+    } else if (index == 25) {
+      Get.to(PanPage());
     }
   }
 }
