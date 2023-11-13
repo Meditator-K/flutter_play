@@ -11,6 +11,7 @@ import 'package:flutter_play/page/paper16_page.dart';
 import 'package:flutter_play/page/paper17_page.dart';
 import 'package:flutter_play/page/paper18_page.dart';
 import 'package:flutter_play/page/paper19_page.dart';
+import 'package:flutter_play/page/paper20_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
@@ -62,6 +63,7 @@ class _HomeState extends State<HomePage> {
     '弹簧',
     '绘制图章',
     '绘制文字',
+    '雪花',
   ];
 
   @override
@@ -157,6 +159,8 @@ class _HomeState extends State<HomePage> {
       Get.to(StampPage());
     } else if (index == 25) {
       Get.to(PanPage());
+    } else if (index == 26) {
+      Get.to(Paper20Page());
     }
   }
 }

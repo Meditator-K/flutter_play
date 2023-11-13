@@ -29,6 +29,7 @@ dependencies:
   flutter_easyloading: ^3.0.0
   get: ^4.6.5
   image: ^3.2.2
+  flame: ^1.10.1
 
 dev_dependencies:
   flutter_test:
