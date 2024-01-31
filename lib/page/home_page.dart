@@ -13,6 +13,7 @@ import 'package:flutter_play/page/paper18_page.dart';
 import 'package:flutter_play/page/paper19_page.dart';
 import 'package:flutter_play/page/paper20_page.dart';
 import 'package:flutter_play/page/paper21_page.dart';
+import 'package:flutter_play/page/paper22_page.dart';
 import 'package:flutter_play/page/paper2_page.dart';
 import 'package:flutter_play/page/paper3_page.dart';
 import 'package:flutter_play/page/paper4_page.dart';
@@ -66,6 +67,7 @@ class _HomeState extends State<HomePage> {
     '绘制文字',
     '雪花',
     '补间动画',
+    'loading',
   ];
 
   @override
@@ -165,6 +167,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper20Page());
     } else if (index == 27) {
       Get.to(Paper21Page());
+    } else if (index == 28) {
+      Get.to(Paper22Page());
     }
   }
 }
