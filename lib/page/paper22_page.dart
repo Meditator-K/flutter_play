@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_play/widgets/circle_halo.dart';
 import 'package:flutter_play/widgets/cross_loading.dart';
+import 'package:flutter_play/widgets/oval_loading.dart';
 import 'package:flutter_play/widgets/rotate_loading.dart';
 
 class Paper22Page extends StatelessWidget {
@@ -17,7 +18,9 @@ class Paper22Page extends StatelessWidget {
             SizedBox(height: 140),
             RotateLoading(),
             SizedBox(height: 160),
-            CrossLoading()
+            CrossLoading(),
+            SizedBox(height: 120),
+            OvalLoading()
           ],
         ));
   }
