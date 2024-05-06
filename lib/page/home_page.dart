@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_play/constant/widget_style.dart';
+import 'package:flutter_play/page/clock_page.dart';
 import 'package:flutter_play/page/paint_test_page.dart';
 import 'package:flutter_play/page/paper10_page.dart';
 import 'package:flutter_play/page/paper11_page.dart';
@@ -68,6 +69,7 @@ class _HomeState extends State<HomePage> {
     '雪花',
     '补间动画',
     'loading',
+    '时钟',
   ];
 
   @override
@@ -169,6 +171,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper21Page());
     } else if (index == 28) {
       Get.to(Paper22Page());
+    } else if (index == 29) {
+      Get.to(ClockPage());
     }
   }
 }
