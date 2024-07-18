@@ -24,6 +24,7 @@ import 'package:flutter_play/page/paper8_page.dart';
 import 'package:flutter_play/page/paper9_page.dart';
 import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
+import 'package:flutter_play/page/sliver_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
 import 'package:flutter_play/page/tilt_list_page.dart';
 import 'package:flutter_play/touch/pan_page.dart';
@@ -70,6 +71,7 @@ class _HomeState extends State<HomePage> {
     '补间动画',
     'loading',
     '时钟',
+    'CustomScrollView',
   ];
 
   @override
@@ -81,9 +83,9 @@ class _HomeState extends State<HomePage> {
       ),
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 15,
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
+              crossAxisSpacing: 5,
+              crossAxisCount: 3,
+              mainAxisSpacing: 5,
               childAspectRatio: 1.5),
           itemBuilder: (context, index) {
             return InkWell(
@@ -92,7 +94,7 @@ class _HomeState extends State<HomePage> {
                   color: Colors.grey.withAlpha(50),
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 15,horizontal: 3),
                   child: Text(
                     _items[index],
                     style: TextStyle(
@@ -173,6 +175,8 @@ class _HomeState extends State<HomePage> {
       Get.to(Paper22Page());
     } else if (index == 29) {
       Get.to(ClockPage());
+    } else if (index == 30) {
+      Get.to(SliverPage());
     }
   }
 }
