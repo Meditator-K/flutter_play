@@ -20,7 +20,7 @@ class SliverState extends State<SliverPage> {
               delegate: ShowPersistentHeaderDelegate(height: 50)),
           SliverPersistentHeader(
               pinned: true,
-              delegate: FixedPersistentHeaderDelegate(height: 50)),
+              delegate: FixedPersistentHeaderDelegate(min: 50, max: 150)),
           SliverPadding(
               padding: EdgeInsets.all(8),
               sliver: SliverGrid(
@@ -54,33 +54,55 @@ class SliverState extends State<SliverPage> {
 }
 
 class FixedPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
-  double height;
+  double max;
+  double min;
 
-  FixedPersistentHeaderDelegate({required this.height});
+  FixedPersistentHeaderDelegate({required this.max, required this.min});
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      height: height,
-      color: Colors.blue,
-      alignment: Alignment.center,
-      child: Text(
-        'SliverPersistentHeader',
-        style: TextStyle(color: Colors.white, fontSize: 15),
-      ),
+    double progress = shrinkOffset / (max - min);
+    progress = progress > 1 ? 1 : progress;
+    return Stack(
+      fit: StackFit.expand,
+      alignment: AlignmentDirectional.topCenter,
+      children: [
+        Container(
+          color: Color.lerp(Colors.blue, Colors.orange, progress),
+        ),
+        Opacity(
+          opacity: 1 - progress,
+          child: Image.asset(
+            'images/title_bg.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Align(
+          alignment:
+              AlignmentTween(begin: Alignment(0, -0.8), end: Alignment(0, 0))
+                  .transform(progress),
+          child: Text(
+            'SliverPersistentHeader',
+            style: TextStyle(
+                color: progress > 0.6 ? Colors.white : Colors.black,
+                fontSize: Tween(begin: 20.0, end: 15.0).transform(progress),
+                fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
     );
   }
 
   @override
-  double get maxExtent => height;
+  double get maxExtent => max;
 
   @override
-  double get minExtent => height;
+  double get minExtent => min;
 
   @override
   bool shouldRebuild(covariant FixedPersistentHeaderDelegate oldDelegate) {
-    return oldDelegate.height != height;
+    return oldDelegate.max != max || oldDelegate.min != min;
   }
 }
 
@@ -110,7 +132,7 @@ class ShowPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => height;
 
   @override
-  bool shouldRebuild(covariant FixedPersistentHeaderDelegate oldDelegate) {
+  bool shouldRebuild(covariant ShowPersistentHeaderDelegate oldDelegate) {
     return oldDelegate.height != height;
   }
 
