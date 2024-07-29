@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_play/common/overlay_manager.dart';
 import 'package:flutter_play/constant/widget_style.dart';
 import 'package:flutter_play/page/clock_page.dart';
 import 'package:flutter_play/page/paint_test_page.dart';
@@ -72,6 +73,7 @@ class _HomeState extends State<HomePage> {
     'loading',
     '时钟',
     'CustomScrollView',
+    '悬浮窗'
   ];
 
   @override
@@ -94,7 +96,7 @@ class _HomeState extends State<HomePage> {
                   color: Colors.grey.withAlpha(50),
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 15,horizontal: 3),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 3),
                   child: Text(
                     _items[index],
                     style: TextStyle(
@@ -177,6 +179,8 @@ class _HomeState extends State<HomePage> {
       Get.to(ClockPage());
     } else if (index == 30) {
       Get.to(SliverPage());
+    } else if (index == 31) {
+      OverlayManager().show(Get.context!);
     }
   }
 }

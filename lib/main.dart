@@ -21,13 +21,13 @@ void main() {
     ..backgroundColor = Colors.green
     ..textColor = Colors.white
     ..indicatorColor = Colors.green;
-  runApp(GetMaterialApp(home: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
