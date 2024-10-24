@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_play/common/eventbus_manager.dart';
 import 'package:flutter_play/common/overlay_manager.dart';
 import 'package:flutter_play/constant/widget_style.dart';
 import 'package:flutter_play/page/clock_page.dart';
+import 'package:flutter_play/page/event_page.dart';
 import 'package:flutter_play/page/paint_test_page.dart';
 import 'package:flutter_play/page/paper10_page.dart';
 import 'package:flutter_play/page/paper11_page.dart';
@@ -73,8 +77,25 @@ class _HomeState extends State<HomePage> {
     'loading',
     '时钟',
     'CustomScrollView',
-    '悬浮窗'
+    '悬浮窗',
+    'Eventbus',
   ];
+
+  StreamSubscription? subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = EventbusManager().on<MyEvent>().listen((event) {
+      print('收到事件：${event.data}');
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -181,6 +202,8 @@ class _HomeState extends State<HomePage> {
       Get.to(SliverPage());
     } else if (index == 31) {
       OverlayManager().show(Get.context!);
+    } else if (index == 32) {
+      Get.to(EventPage());
     }
   }
 }

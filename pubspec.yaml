@@ -30,6 +30,7 @@ dependencies:
   get: ^4.6.5
   image: ^3.2.2
   flame: ^1.10.1
+  event_bus: ^2.0.1
 
 dev_dependencies:
   flutter_test:
