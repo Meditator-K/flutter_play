@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_play/util/sp_util.dart';
 
 class TemperaturePage extends StatefulWidget {
   @override
@@ -28,10 +29,21 @@ class _TemperatureState extends State<TemperaturePage>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SpUtil.getStrList('tempLocal').then((List<String>? items) {
+        if (items != null && items.isNotEmpty) {
+          _data = items.map((e) => double.parse(e)).toList();
+          setState(() {});
+        }
+      });
+    });
   }
 
   @override
   void dispose() {
+    if (_data.isNotEmpty) {
+      SpUtil.putStrList('tempLocal', _data.map((e) => e.toString()).toList());
+    }
     super.dispose();
   }
 
@@ -48,16 +60,17 @@ class _TemperatureState extends State<TemperaturePage>
             children: _src
                 .map((e) => TextButton(
                     onPressed: () {
-                      if (_data.length == 30) {
-                        return;
-                      }
                       if (e == 0) {
                         if (_data.length > 0) {
                           _data.removeLast();
+                          setState(() {});
                         }
-                      } else {
-                        _data.add(e);
+                        return;
                       }
+                      if (_data.length == 30) {
+                        return;
+                      }
+                      _data.add(e);
                       setState(() {});
                     },
                     style: TextButton.styleFrom(
