@@ -30,7 +30,7 @@ class Paper7State extends State<Paper7Page> {
         ball.x = i * _d + _d / 2;
         ball.y = j * _d + _d / 2;
         ball.r = _d / 2;
-        Color color = Color(_image!.getPixel(i, j));
+        Color color = Color(_image!.getPixelIndex(i, j));
         ball.color =
             Color.fromARGB(color.alpha, color.blue, color.green, color.red);
         _balls.add(ball);
@@ -86,7 +86,7 @@ class Paper7Paint extends CustomPainter {
 
     canvas.translate(size.width / 2, size.height / 2);
     if (img != null) {
-      int colorInt = img!.getPixel(img!.width, 0);
+      int colorInt = img!.getPixelIndex(img!.width, 0);
       Color color = Color(colorInt);
       //注意: image 包读取的颜色的通道信息和 Dart 的不一致，需要处理一下，R 和 B 对换
       canvas.drawCircle(

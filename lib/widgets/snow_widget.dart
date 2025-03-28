@@ -1,46 +1,46 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flame/components.dart';
+// import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_play/main_flame.dart';
 
-class SnowSprite extends CustomPainterComponent with HasGameRef<GameSnow> {
-  double speed = 1;
-
-  @override
-  FutureOr<void> onLoad() async {
-    super.onLoad();
-    size = _getRandomSize();
-    position = _getRandomPosition();
-    painter = SnowPainter();
-    speed = Random().nextDouble() * 1 + 1;
-  }
-
-  //5~15随机数
-  Vector2 _getRandomSize() {
-    double size = Random().nextDouble() * 10 + 5;
-    return Vector2(size, size);
-  }
-
-  //屏幕内的随机数
-  Vector2 _getRandomPosition() {
-    double x = Random().nextDouble() * gameRef.size.x;
-    double y = Random().nextDouble() * gameRef.size.y;
-    return Vector2(x, y);
-  }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-    if (position.y > gameRef.size.y) {
-      position.y = 0;
-      position.x = Random().nextDouble() * gameRef.size.x;
-      size = _getRandomSize();
-    }
-    position.y += speed;
-  }
-}
+// class SnowSprite extends CustomPainterComponent with HasGameRef<GameSnow> {
+//   double speed = 1;
+//
+//   @override
+//   FutureOr<void> onLoad() async {
+//     super.onLoad();
+//     size = _getRandomSize();
+//     position = _getRandomPosition();
+//     painter = SnowPainter();
+//     speed = Random().nextDouble() * 1 + 1;
+//   }
+//
+//   //5~15随机数
+//   Vector2 _getRandomSize() {
+//     double size = Random().nextDouble() * 10 + 5;
+//     return Vector2(size, size);
+//   }
+//
+//   //屏幕内的随机数
+//   Vector2 _getRandomPosition() {
+//     double x = Random().nextDouble() * gameRef.size.x;
+//     double y = Random().nextDouble() * gameRef.size.y;
+//     return Vector2(x, y);
+//   }
+//
+//   @override
+//   void update(double dt) {
+//     super.update(dt);
+//     if (position.y > gameRef.size.y) {
+//       position.y = 0;
+//       position.x = Random().nextDouble() * gameRef.size.x;
+//       size = _getRandomSize();
+//     }
+//     position.y += speed;
+//   }
+// }
 
 class SnowPainter extends CustomPainter {
   late final Paint snowPaint;

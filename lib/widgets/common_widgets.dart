@@ -1,17 +1,18 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as image;
 
 import '../constant/widget_style.dart';
-import 'dart:ui' as ui;
 
 AppBar commonAppbar(text,
-    {double elevation: 3,
-    backgroundColor: Colors.amber,
+    {double elevation = 3,
+    backgroundColor = Colors.amber,
     Widget? actionWidget,
     PreferredSizeWidget? bottom,
-    automaticallyImplyLeading: true,
+    automaticallyImplyLeading = true,
     actionClick}) {
   return AppBar(
     title: Text(
@@ -39,10 +40,10 @@ AppBar commonAppbar(text,
 
 ///带背景色的按钮
 Widget elevatedBtn(String text, Color backgroundColor, onClick,
-    {TextStyle textStyle: WidgetStyle.white20,
-    double radius: 18,
+    {TextStyle textStyle = WidgetStyle.white20,
+    double radius = 18,
     Widget? childWidget,
-    padding: const EdgeInsets.fromLTRB(12, 6, 12, 6)}) {
+    padding = const EdgeInsets.fromLTRB(12, 6, 12, 6)}) {
   return ElevatedButton(
       onPressed: onClick,
       style: ButtonStyle(
@@ -60,12 +61,12 @@ Widget elevatedBtn(String text, Color backgroundColor, onClick,
 
 ///确认、取消弹框
 void showAlertDialog(BuildContext context, String content,
-    {title: '提示',
-    cancelText: '取消',
-    confirmText: '确认',
+    {title = '提示',
+    cancelText = '取消',
+    confirmText = '确认',
     onCancel,
     onConfirm,
-    barrierDismissible: true}) {
+    barrierDismissible = true}) {
   showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
@@ -111,7 +112,7 @@ Future<ui.Image> loadImageFromAssets(String path) async {
 
 Future<image.Image?> loadImageByImage(String path) async {
   ByteData byteData = await rootBundle.load(path);
-  List<int> data = byteData.buffer
+  Uint8List data = byteData.buffer
       .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
   return image.decodeImage(data);
 }

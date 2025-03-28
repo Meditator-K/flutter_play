@@ -1,25 +1,25 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flame/components.dart';
+// import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_play/main_flame.dart';
 
-class SnowBackground extends CustomPainterComponent with HasGameRef<GameSnow> {
-  @override
-  FutureOr<void> onLoad() {
-    super.onLoad();
-    size = gameRef.size;
-    position = Vector2.zero();
-    painter = SnowBackPainter();
-  }
-
-  @override
-  void onGameResize(Vector2 size) {
-    this.size = size;
-    super.onGameResize(size);
-  }
-}
+// class SnowBackground extends CustomPainterComponent with HasGameRef<GameSnow> {
+//   @override
+//   FutureOr<void> onLoad() {
+//     super.onLoad();
+//     size = gameRef.size;
+//     position = Vector2.zero();
+//     painter = SnowBackPainter();
+//   }
+//
+//   @override
+//   void onGameResize(Vector2 size) {
+//     this.size = size;
+//     super.onGameResize(size);
+//   }
+// }
 
 class SnowBackPainter extends CustomPainter {
   late final Paint snowBackgroundPaint;

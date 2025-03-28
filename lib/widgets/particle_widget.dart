@@ -84,7 +84,7 @@ class ParticleState extends State<ParticleWidget>
 
   void _initParticles() async {
     ByteData data = await rootBundle.load('images/img.png');
-    List<int> bytes =
+    Uint8List bytes =
         data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     image.Image? img = image.decodeImage(bytes);
     if (img != null) {
@@ -101,7 +101,7 @@ class ParticleState extends State<ParticleWidget>
               ax: 0.2,
               ay: 0.2,
               size: 0.5,
-              color: Color(img.getPixel(i, j)));
+              color: Color(img.getPixelIndex(i, j)));
           _pm.addParticle(particle);
           // }
         }

@@ -31,6 +31,7 @@ import 'package:flutter_play/page/paper_page.dart';
 import 'package:flutter_play/page/red_green_light_page.dart';
 import 'package:flutter_play/page/sliver_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
+import 'package:flutter_play/page/temperature_page.dart';
 import 'package:flutter_play/page/tilt_list_page.dart';
 import 'package:flutter_play/touch/pan_page.dart';
 import 'package:flutter_play/touch/spring_page.dart';
@@ -79,6 +80,7 @@ class _HomeState extends State<HomePage> {
     'CustomScrollView',
     '悬浮窗',
     'Eventbus',
+    '体温记录',
   ];
 
   StreamSubscription? subscription;
@@ -204,6 +206,8 @@ class _HomeState extends State<HomePage> {
       OverlayManager().show(Get.context!);
     } else if (index == 32) {
       Get.to(EventPage());
+    } else if (index == 33) {
+      Get.to(TemperaturePage());
     }
   }
 }
