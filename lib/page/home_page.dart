@@ -33,6 +33,7 @@ import 'package:flutter_play/page/sliver_page.dart';
 import 'package:flutter_play/page/stopwatch_page.dart';
 import 'package:flutter_play/page/temperature_page.dart';
 import 'package:flutter_play/page/tilt_list_page.dart';
+import 'package:flutter_play/page/write_text_page.dart';
 import 'package:flutter_play/touch/pan_page.dart';
 import 'package:flutter_play/touch/spring_page.dart';
 import 'package:get/route_manager.dart';
@@ -81,6 +82,7 @@ class _HomeState extends State<HomePage> {
     '悬浮窗',
     'Eventbus',
     '体温记录',
+    '逐字文字',
   ];
 
   StreamSubscription? subscription;
@@ -208,6 +210,8 @@ class _HomeState extends State<HomePage> {
       Get.to(EventPage());
     } else if (index == 33) {
       Get.to(TemperaturePage());
+    }else if (index == 34) {
+      Get.to(WriteTextPage());
     }
   }
 }

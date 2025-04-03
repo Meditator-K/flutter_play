@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('zh'),
       title: '',
       theme: ThemeData(
+          useMaterial3: false,
           primarySwatch: Colors.blue,
           appBarTheme: AppBarTheme(centerTitle: true)),
       home: SplashPage(),
