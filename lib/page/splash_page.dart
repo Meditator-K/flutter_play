@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void countDown() {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       NavigatorUtil.pushAndRemoveUntil(context, HomePage());
     });
   }

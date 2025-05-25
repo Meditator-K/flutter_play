@@ -22,6 +22,10 @@ class _TemperatureState extends State<TemperaturePage>
     36.6,
     36.65,
     36.7,
+    36.75,
+    36.8,
+    36.85,
+    36.9,
     0
   ];
   List<double> _data = [];
@@ -51,38 +55,57 @@ class _TemperatureState extends State<TemperaturePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('体温记录'),
+        toolbarHeight: 48,
+        elevation: 2,
+        title: Text('体温记录',style: TextStyle(color: Colors.black,fontSize: 20),),
+        backgroundColor: Color(0xffe3c887),
       ),
       body: Column(
         children: [
+          SizedBox(height: 8),
           Wrap(
-            spacing: 5,
-            children: _src
-                .map((e) => TextButton(
-                    onPressed: () {
-                      if (e == 0) {
-                        if (_data.length > 0) {
-                          _data.removeLast();
-                          setState(() {});
-                        }
-                        return;
-                      }
-                      if (_data.length == 30) {
-                        return;
-                      }
-                      _data.add(e);
+            spacing: 6,
+            runSpacing: 10,
+            children: _src.map((e) {
+              if (e == 0) {
+                return InkWell(
+                  onTap: () {
+                    if (_data.length > 0) {
+                      _data.removeLast();
                       setState(() {});
-                    },
-                    style: TextButton.styleFrom(
-                        minimumSize: Size(50, 30),
-                        maximumSize: Size(50, 30),
-                        padding: EdgeInsets.zero,
-                        backgroundColor: Colors.amberAccent),
-                    child: Text(
-                      '${e == 0 ? 'X' : e}',
-                      style: TextStyle(color: Colors.black, fontSize: 14),
-                    )))
-                .toList(),
+                    }
+                  },
+                  onLongPress: () {
+                    if (_data.length > 0) {
+                      _data.clear();
+                      setState(() {});
+                    }
+                  },
+                  child: Icon(
+                    Icons.cancel,
+                    color: Colors.red,
+                    size: 24,
+                  ),
+                );
+              }
+              return InkWell(
+                  onTap: () {
+                    if (_data.length == 30) {
+                      return;
+                    }
+                    _data.add(e);
+                    setState(() {});
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                          color: Colors.orangeAccent,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Text(
+                        '$e',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      )));
+            }).toList(),
           ),
           Expanded(
               child: Container(
@@ -92,7 +115,7 @@ class _TemperatureState extends State<TemperaturePage>
                   child: RotatedBox(
                       quarterTurns: 1,
                       child: CustomPaint(
-                        size: Size(MediaQuery.of(context).size.height * 2 / 3,
+                        size: Size(MediaQuery.of(context).size.height * 3 / 4,
                             MediaQuery.of(context).size.width - 30),
                         painter: TemperaturePaint(yData: _data),
                       ))))
@@ -138,7 +161,7 @@ class TemperaturePaint extends CustomPainter {
     canvas.drawPath(_axisPath, _axisPaint);
     //绘制刻度和文字
     double xStep = (size.width - kScaleHeight) / _xData.length;
-    double yStep = (size.height - kScaleHeight) / 8;
+    double yStep = (size.height - kScaleHeight) / 9;
     Path scalePath = Path();
     scalePath.moveTo(xStep, 0);
     for (int i = 0; i < _xData.length; i++) {
@@ -159,10 +182,10 @@ class TemperaturePaint extends CustomPainter {
     }
     scalePath.relativeMoveTo(-size.width + kScaleHeight, -yStep - kScaleHeight);
     Path guidePath = Path()..moveTo(0, -yStep);
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
       guidePath.relativeLineTo(size.width - kScaleHeight, 0);
       scalePath.relativeLineTo(-kScaleHeight, 0);
-      if (i < 7) {
+      if (i < 8) {
         scalePath.relativeMoveTo(kScaleHeight, -yStep);
         guidePath.relativeMoveTo(-(size.width - kScaleHeight), -yStep);
       }
@@ -197,7 +220,7 @@ class TemperaturePaint extends CustomPainter {
     List<Offset> points = [];
     Path linePath = Path();
     for (int i = 0; i < yData.length; i++) {
-      double barHeight = ((yData[i] - 36) / 0.8) * (size.height - kScaleHeight);
+      double barHeight = ((yData[i] - 36) / 0.9) * (size.height - kScaleHeight);
       Offset point = Offset(xStep * i + xStep / 2, -barHeight);
       points.add(point);
       if (i == 0) {
