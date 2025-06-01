@@ -45,10 +45,18 @@ class _TemperatureState extends State<TemperaturePage>
 
   @override
   void dispose() {
+    _saveData();
+    super.dispose();
+  }
+
+  void _saveData({bool clearAll = false}) {
+    if (clearAll) {
+      SpUtil.putStrList('tempLocal', []);
+      return;
+    }
     if (_data.isNotEmpty) {
       SpUtil.putStrList('tempLocal', _data.map((e) => e.toString()).toList());
     }
-    super.dispose();
   }
 
   @override
@@ -57,7 +65,10 @@ class _TemperatureState extends State<TemperaturePage>
       appBar: AppBar(
         toolbarHeight: 48,
         elevation: 2,
-        title: Text('体温记录',style: TextStyle(color: Colors.black,fontSize: 20),),
+        title: Text(
+          '体温记录',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
         backgroundColor: Color(0xffe3c887),
       ),
       body: Column(
@@ -73,12 +84,14 @@ class _TemperatureState extends State<TemperaturePage>
                     if (_data.length > 0) {
                       _data.removeLast();
                       setState(() {});
+                      _saveData();
                     }
                   },
                   onLongPress: () {
                     if (_data.length > 0) {
                       _data.clear();
                       setState(() {});
+                      _saveData(clearAll: true);
                     }
                   },
                   child: Icon(
@@ -95,6 +108,7 @@ class _TemperatureState extends State<TemperaturePage>
                     }
                     _data.add(e);
                     setState(() {});
+                    _saveData();
                   },
                   child: Container(
                       padding: EdgeInsets.all(2),
